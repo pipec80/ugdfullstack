@@ -1,0 +1,8 @@
+*/.DS_Store
+gulpfile.js
+package.json
+node_modules/
+assets/css/.sass-cache/
+assets/css/maps/
+debug.log
+.vscode/
