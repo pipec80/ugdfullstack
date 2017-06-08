@@ -25,12 +25,35 @@
 
     <div class="container">
         <div class="header clearfix">
-            <h3 class="text-muted">sdf</h3>
+            <h3 class="text-muted"> {{titulo}}</h3>
         </div>
-        {{titulo}} {{position}}
-        <table class="table table-hover">
+        {{position}}
+        <div ng-if="mostrar">
+            <h3>Se han encontrado {{totalItems}} Puntos de recarga BIP! cerca suyo</h3>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>ENTIDAD</th>
+                        <th>CODIGO</th>
+                        <th>COMUNA</th>
+                        <th>NOMBRE FANTASIA</th>
+                        <th>HORARIO REFERENCIAL</th>
+                        <th>DIRECCION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in listado">
+                        <td>{{item.ENTIDAD}}</td>
+                        <td>{{item.CODIGO}}</td>
+                        <td>{{item.COMUNA}}</td>
+                        <td>{{item['NOMBRE FANTASIA']}}</td>
+                        <td>{{item['HORARIO REFERENCIAL']}}</td>
+                        <td>{{item.DIRECCION}}</td>
 
-        </table>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
         <footer class="footer">
             <p>&copy; 2015 Company, Inc.</p>
         </footer>
