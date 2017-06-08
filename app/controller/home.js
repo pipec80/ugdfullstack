@@ -7,13 +7,16 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
                 console.log(position.coords.Coordinates, 'current position');
+
                 $scope.$apply(function() {
                     $scope.position = '';
                     $scope.latitude = position.coords.latitude;
                     $scope.longitude = position.coords.longitude;
                     $scope.position = $scope.longitude + '|--|' + $scope.latitude;
+                    $scope.consulta = [$scope.latitude, $scope.longitude];
+                    $scope.mapsGeocode = { "lat": $scope.latitude, "lng": $scope.longitude };
 
-                    dataResource.query({ limit: 2, resource_id: 'ba0cd493-8bec-4806-91b5-4c2b5261f65e' }).$promise.then(function(data) {
+                    dataResource.query({ resource_id: 'ba0cd493-8bec-4806-91b5-4c2b5261f65e' }).$promise.then(function(data) {
                         $scope.listado = data.result.records;
                         $scope.totalItems = $scope.listado.length;
                         console.log('result: ', data.result.records);
