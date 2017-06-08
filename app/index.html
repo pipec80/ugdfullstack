@@ -31,7 +31,7 @@
             <h3>Se han encontrado {{totalItems}} Puntos de recarga BIP! cerca suyo</h3>
 
             <ng-map center="{{mapsGeocode.lat}},{{mapsGeocode.lng}}" zoom="16">
-                <marker position="{{mapsGeocode.lat}},{{mapsGeocode.lng}}" title="Hello World!"></marker>
+                <marker ng-repeat="item in listado" position="[ {{item.LATITUD}},{{item.LONGITUD}} ]" title="{{item.DIRECCION}}" animation="DROP"></marker>
             </ng-map>
             <table class="table table-hover">
                 <thead>
@@ -74,7 +74,7 @@
     <!-- inject:js -->
     <script src="app.js"></script>
     <script src="controller/home.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaqD25nJGCCNmzfE_3O3ocJgnR3gUt_jc" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaqD25nJGCCNmzfE_3O3ocJgnR3gUt_jc&sensor=false" async defer></script>
     <script src="js/ngmap/build/scripts/ng-map.min.js"></script>
     <!-- endinject -->
 </body>

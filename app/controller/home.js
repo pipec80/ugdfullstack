@@ -4,9 +4,10 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
         $scope.titulo = "Puntos de recarga BIP! en estaciones Metro";
         $scope.listado = {};
         $scope.mostrar = false;
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
-                console.log(position.coords.Coordinates, 'current position');
+                console.log(position.coords, 'current position');
 
                 $scope.$apply(function() {
                     $scope.position = '';
