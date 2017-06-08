@@ -5,18 +5,18 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
         $scope.listado = {};
         $scope.mostrar = false;
         $scope.puntosRegargas = [];
+        $scope.puntoCercano = [];
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
                 $scope.$apply(function() {
-
                     $scope.position = '';
                     $scope.latitude = position.coords.latitude;
                     $scope.longitude = position.coords.longitude;
                     $scope.position = $scope.longitude + '|--|' + $scope.latitude;
                     $scope.consulta = [$scope.latitude, $scope.longitude];
                     $scope.mapsGeocode = { "lat": $scope.latitude, "lng": $scope.longitude };
-
+                    //lamado a servicio
                     dataResource.query({ resource_id: 'ba0cd493-8bec-4806-91b5-4c2b5261f65e' }).$promise.then(function(data) {
                         $scope.listado = data.result.records;
                         $scope.totalItems = $scope.listado.length;
@@ -24,10 +24,7 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
                             var nItem = [value._id, value.LATITUD, value.LONGITUD];
                             $scope.puntosRegargas.push(nItem);
                         });
-
-                        console.log('$scope.puntosRegargas: ', $scope.puntosRegargas);
                         $scope.NearestCity($scope.latitude, $scope.longitude);
-
                     }, function(errResponse) {
                         console.log('Failed: ', errResponse);
                     });
@@ -36,13 +33,10 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
             });
         }
 
-
-
         $scope.NearestCity = function(latitude, longitude) {
             console.log("latitude, longitude", latitude, longitude);
             var mindif = 99999;
             var closest;
-
             for (var index = 0; index < $scope.puntosRegargas.length; ++index) {
                 var dif = PythagorasEquirectangular(latitude, longitude, $scope.puntosRegargas[index][1], $scope.puntosRegargas[index][2]);
                 if (dif < mindif) {
@@ -50,10 +44,8 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
                     mindif = dif;
                 }
             }
-
             // echo the nearest city
             console.log("cities[closest]", $scope.puntosRegargas[closest]);
-
         };
 
         // Convert Degress to Radians
