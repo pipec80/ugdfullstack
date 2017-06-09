@@ -7,16 +7,17 @@ def api_root():
     client = MongoClient()
     db = client.bdpuntosCarga
     cursor = db.puntosCarga.find()
-    for document in cursor:
-        js = json.dumps(document)
+    docs = list(db.puntosCarga.find())
+   
+    js = json.dumps(docs)
     resp = Response(js, status=201, mimetype='application/json')
     resp.headers['Link'] = 'http://server'
     return resp
 
 @app.route('/puntoventa', methods = ['GET'])
 def api_puntos():
-    client = MongoClient()
-    db = client.bdpuntosCarga
+    #client = MongoClient()
+    #db = client.bdpuntosCarga
     latlag = request.args['P']
     radio = request.args['R']
     data = {

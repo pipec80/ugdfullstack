@@ -18,7 +18,8 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
                     $scope.mapsGeocode = { "lat": $scope.latitude, "lng": $scope.longitude };
                     //lamado a servicio
                     dataResource.query({ latitude: $scope.latitude, longitude: $scope.longitude }).$promise.then(function(data) {
-                        $scope.listado = data.result.records;
+                        console.log("data", data);
+                        $scope.listado = data;
                         $scope.totalItems = $scope.listado.length;
                         angular.forEach($scope.listado, function(value, key) {
                             var nItem = [value._id, value.LATITUD, value.LONGITUD];
@@ -73,7 +74,7 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
             {
                 'get': { method: 'GET' },
                 'save': { method: 'POST' },
-                'query': { method: 'GET', isArray: false },
+                'query': { method: 'GET', isArray: true },
                 'remove': { method: 'DELETE' },
                 'delete': { method: 'DELETE' }
             });
