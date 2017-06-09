@@ -17,7 +17,7 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
                     $scope.consulta = [$scope.latitude, $scope.longitude];
                     $scope.mapsGeocode = { "lat": $scope.latitude, "lng": $scope.longitude };
                     //lamado a servicio
-                    dataResource.query({ resource_id: 'ba0cd493-8bec-4806-91b5-4c2b5261f65e' }).$promise.then(function(data) {
+                    dataResource.query({ latitude: $scope.latitude, longitude: $scope.longitude }).$promise.then(function(data) {
                         $scope.listado = data.result.records;
                         $scope.totalItems = $scope.listado.length;
                         angular.forEach($scope.listado, function(value, key) {
@@ -34,7 +34,6 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
         }
 
         $scope.NearestCity = function(latitude, longitude) {
-            console.log("latitude, longitude", latitude, longitude);
             var mindif = 99999;
             var closest;
             for (var index = 0; index < $scope.puntosRegargas.length; ++index) {
@@ -45,7 +44,7 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
                 }
             }
             // echo the nearest city
-            console.log("cities[closest]", $scope.puntosRegargas[closest]);
+            $scope.puntoCercano = $scope.puntosRegargas[closest];
         };
 
         // Convert Degress to Radians
@@ -67,7 +66,7 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
 
     }])
     .factory('dataResource', ['$resource', function($resource) {
-        return $resource('http://datos.gob.cl/api/action/datastore_search', //la url donde queremos consumir
+        return $resource('http://localhost/ugdfullstack/layer_communication/rest.php', //la url donde queremos consumir
             {}, //aquí podemos pasar variables que queramos pasar a la consulta
             //a la función get le decimos el método, y, si es un array lo que devuelve
             //ponemos isArray en true

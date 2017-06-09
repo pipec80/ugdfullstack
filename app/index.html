@@ -29,8 +29,9 @@
         {{position}}
         <div ng-if="mostrar">
             <h3>Se han encontrado puntos de recarga BIP! cerca suyo</h3>
-            <ng-map center="{{mapsGeocode.lat}},{{mapsGeocode.lng}}" zoom="16">
-                <marker ng-repeat="item in listado" position="[ {{item.LATITUD}},{{item.LONGITUD}} ]" title="{{item.DIRECCION}}" animation="DROP"></marker>
+            <ng-map center="{{puntoCercano[1]}},{{puntoCercano[2]}}" zoom="16">
+                <marker position="[{{puntoCercano[1]}},{{puntoCercano[2]}}]" title="how" animation="Animation.BOUNCE"></marker>
+                <!--  <marker ng-repeat="item in listado" position="[ {{item.LATITUD}},{{item.LONGITUD}} ]" title="{{item.DIRECCION}}" animation="DROP"></marker>-->
             </ng-map>
             <table class="table table-hover">
                 <thead>
