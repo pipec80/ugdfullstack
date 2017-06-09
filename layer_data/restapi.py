@@ -9,6 +9,7 @@ def api_root():
 @app.route('/puntoventa', methods = ['GET'])
 def api_puntos():
     client = MongoClient()
+    db = client.bdpuntosCarga
     latlag = request.args['P']
     radio = request.args['R']
     data = {
