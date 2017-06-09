@@ -6,7 +6,7 @@ app = Flask(__name__)
 def api_root():
     client = MongoClient()
     db = client.bdpuntosCarga
-    cursor = db.puntosCarga.find()
+    cursor = db.puntosCarga.find({})
     docs = list(db.puntosCarga.find())
    
     js = json.dumps(docs)

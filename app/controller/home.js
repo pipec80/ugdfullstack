@@ -45,7 +45,9 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
                 }
             }
             // echo the nearest city
+
             $scope.puntoCercano = $scope.puntosRegargas[closest];
+            console.log(" $scope.puntoCercano", $scope.puntoCercano);
         };
 
         // Convert Degress to Radians
