@@ -11,5 +11,6 @@ def consumeGETRequestSync():
     data = response.json()
     records = data['result']['records']
     #print (records)
-    db.puntosCarga.count()
+    result = db.puntosCarga.insert_many(records)
+    print (db.puntosCarga.count())
 consumeGETRequestSync()

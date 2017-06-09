@@ -4,7 +4,14 @@ app = Flask(__name__)
 
 @app.route('/')
 def api_root():
-    return 'Welcome'
+    client = MongoClient()
+    db = client.bdpuntosCarga
+    cursor = db.puntosCarga.find()
+    for document in cursor:
+        js = json.dumps(document)
+    resp = Response(js, status=201, mimetype='application/json')
+    resp.headers['Link'] = 'http://server'
+    return resp
 
 @app.route('/puntoventa', methods = ['GET'])
 def api_puntos():
