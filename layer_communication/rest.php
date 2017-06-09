@@ -83,10 +83,11 @@ function logout(){
 
 switch ($method) {
 	case 'GET'://request is read-only,
-		http_response_code(201);
-		//$var = $_GET[''];
+		//http_response_code(201);
+		$latitude = $_GET['latitude'];
+		$longitude = $_GET['longitude'];
 		$url  = 'http://datos.gob.cl/api/action/datastore_search?resource_id=ba0cd493-8bec-4806-91b5-4c2b5261f65e';
-
+		//$url = 'http://127.0.0.1:9000/puntoventa?P=('.$latitude.','.$longitude.')&R=10';
 		$headers[] = 'Accept:application/json; charset=utf-8';
 		$ch = curl_init(); 
 

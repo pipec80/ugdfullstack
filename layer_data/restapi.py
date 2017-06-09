@@ -1,4 +1,5 @@
-from flask import Flask, url_for, Response, json
+from flask import Flask, url_for, Response, json, request
+from pymongo import MongoClient
 app = Flask(__name__)
 
 @app.route('/')
@@ -7,12 +8,15 @@ def api_root():
 
 @app.route('/puntoventa', methods = ['GET'])
 def api_puntos():
+    client = MongoClient()
+    latlag = request.args['P']
+    radio = request.args['R']
     data = {
-        'hello'  : 'world',
-        'number' : 3
+        'p'  : latlag,
+        'radio' : radio
     }
     js = json.dumps(data)
-    resp = Response(js, status=200, mimetype='application/json')
+    resp = Response(js, status=201, mimetype='application/json')
     resp.headers['Link'] = 'http://server'
     return resp
 
