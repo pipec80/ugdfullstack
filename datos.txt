@@ -26,3 +26,5 @@ https://docs.mongodb.com/manual/tutorial/geospatial-tutorial/
 .\mongo.exe bdpuntosCarga
 
 db.puntosCarga.createIndex({ "location": "2dsphere" })
+
+http://127.0.0.1:9000/puntoventa?P=(-70.6038217,-33.421955)&R=10

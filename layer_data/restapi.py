@@ -17,7 +17,14 @@ def api_root():
 def api_puntos():
     latlag = request.args['P']
     radio = request.args['R']
-
+    #[ <longitude> , <latitude> ]
+    latlagvalues = latlag.split(",")
+    latitude = float(latlagvalues[0].replace("(", ""))
+    longitude = float(latlagvalues[1].replace(")", ""))
+    data = {
+        "latitude" : latitude,
+        "longitude" : longitude
+    }
     client = MongoClient()
     db = client.bdpuntosCarga
 
@@ -31,4 +38,4 @@ def api_article(puntoventaid):
     return 'You are reading ' + puntoventaid
 
 if __name__ == '__main__':
-    app.run( port=9000)
+    app.run(port=9000)

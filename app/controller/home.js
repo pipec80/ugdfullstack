@@ -17,7 +17,7 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
                     $scope.consulta = [$scope.latitude, $scope.longitude];
                     $scope.mapsGeocode = { "lat": $scope.latitude, "lng": $scope.longitude };
                     //lamado a servicio
-                    dataResource.query({ latitude: $scope.latitude, longitude: $scope.longitude }).$promise.then(function(data) {
+                    dataResource.query({ longitude: $scope.longitude, latitude: $scope.latitude }).$promise.then(function(data) {
                         console.log("data", data);
                         $scope.listado = data;
                         $scope.totalItems = $scope.listado.length;
