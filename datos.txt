@@ -1,0 +1,22 @@
+pip install virtualenv
+virtualenv flask
+pip install Flask
+python -m pip install pymongo
+
+
+python .\restapi.py
+
+python .\load_datos_bip.py
+
+
+-70.6038217|--|-33.421955
+
+Array [ 5, "-33.4183253038000032120180549100041…", "-70.6018049956999931282553006894886…" ]
+
+"location":{"coordinates":[-73.9634876,40.6940001],"type":"Point"}  “longitude, latitude.”
+
+
+{'ENTIDAD': 'METRO', 'ESTE': '346563.6762999999918974936008453369140625', 'CODIGO': 'L5', 'COMUNA': 'Santiago', 'NOMBRE FANTASIA': 'PLAZA DE ARMAS', 'HORARIO REFERENCIAL': 'Lunes a Viern
+es: 6:00 a 23:00 horas\nSábados: 6:30 a 22:30 horas\nDomingos y festivos: 8:00 a 22:30 horas. ', 'DIRECCION': '21 de Mayo N° 543', 'LATITUD': '-33.437271791100002360508369747549295425415
+0390625', 'NORTE': '6299017.316499999724328517913818359375', '_id': 1, 'LONGITUD': '-70.650608947400002080030390061438083648681640625', 'location': {'coordinates': ['-70.6506089474000020
+80030390061438083648681640625', '-33.4372717911000023605083697475492954254150390625'], 'type': 'Point'}}

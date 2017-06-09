@@ -14,6 +14,7 @@ def consumeGETRequestSync():
        cmd = entry
        cmd['location'] = {"coordinates":[cmd['LONGITUD'],cmd['LATITUD']],"type":"Point"} # “longitude, latitude.”
        print (cmd)
+       #result = db.puntosCarga.insert(cmd)
 
     #LONGITUD LATITUD
     #print (records)
