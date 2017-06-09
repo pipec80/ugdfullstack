@@ -1,1 +1,1 @@
-c:\users\administrador\appdata\local\programs\python\python36-32
+c:\users\felip\appdata\local\programs\python\python36-32

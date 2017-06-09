@@ -40,7 +40,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="$(if [ "$OSTYPE" "==" "cygwin" ]; then cygpath -u 'C:\xampp\htdocs\ugdfullstack\flask'; else echo '/C/xampp/htdocs/ugdfullstack/flask'; fi;)"
+VIRTUAL_ENV="$(if [ "$OSTYPE" "==" "cygwin" ]; then cygpath -u 'C:\xampp\htdocs\SOLO_TEST\Angular_\ugd\ugdfullstack\layer_data\flask'; else echo '/C/xampp/htdocs/SOLO_TEST/Angular_/ugd/ugdfullstack/layer_data/flask'; fi;)"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

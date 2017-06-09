@@ -1,5 +1,5 @@
 @echo off
-set "VIRTUAL_ENV=C:\xampp\htdocs\ugdfullstack\flask"
+set "VIRTUAL_ENV=C:\xampp\htdocs\SOLO_TEST\Angular_\ugd\ugdfullstack\layer_data\flask"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

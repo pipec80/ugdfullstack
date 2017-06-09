@@ -66,8 +66,8 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
         }
 
     }])
-    .factory('dataResource', ['$resource', function($resource) {
-        return $resource('http://localhost/ugdfullstack/layer_communication/rest.php', //la url donde queremos consumir
+    .factory('dataResource', ['$resource', 'URL_API', function($resource, URL_API) {
+        return $resource(URL_API, //la url donde queremos consumir
             {}, //aquí podemos pasar variables que queramos pasar a la consulta
             //a la función get le decimos el método, y, si es un array lo que devuelve
             //ponemos isArray en true
