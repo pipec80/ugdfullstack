@@ -22,3 +22,7 @@ es: 6:00 a 23:00 horas\nSábados: 6:30 a 22:30 horas\nDomingos y festivos: 8:00 
 80030390061438083648681640625', '-33.4372717911000023605083697475492954254150390625'], 'type': 'Point'}}
 
 https://docs.mongodb.com/manual/tutorial/geospatial-tutorial/
+
+.\mongo.exe bdpuntosCarga
+
+db.puntosCarga.createIndex({ "location": "2dsphere" })

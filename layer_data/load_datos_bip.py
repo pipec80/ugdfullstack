@@ -10,15 +10,11 @@ def consumeGETRequestSync():
     headers = {"Accept": "application/json"}
     response = requests.get(url)
     data = response.json()
-    records = list(data['result']['records'])
+
     for entry in data['result']['records']:
-       cmd = entry
-       cmd['location'] = {"coordinates":[cmd['LONGITUD'],cmd['LATITUD']],"type":"Point"} # “longitude, latitude.”
-       #print (cmd)
-       db.puntosCarga.insert(cmd)
-
-    #LONGITUD LATITUD
-
-    #db.puntosCarga.createIndex({location:"2dsphere"})
-    print ('puntos cargados',db.puntosCarga.count())
+        cmd = entry
+        cmd['location'] = {"coordinates":[float(cmd['LONGITUD']), float(cmd['LATITUD'])], "type":"Point"}
+        db.puntosCarga.insert(cmd)
+        
+    print('puntos cargados', db.puntosCarga.count())
 consumeGETRequestSync()

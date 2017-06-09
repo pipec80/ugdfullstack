@@ -21,11 +21,13 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
                         console.log("data", data);
                         $scope.listado = data;
                         $scope.totalItems = $scope.listado.length;
+
                         angular.forEach($scope.listado, function(value, key) {
                             var nItem = [value._id, value.LATITUD, value.LONGITUD];
                             $scope.puntosRegargas.push(nItem);
                         });
                         $scope.NearestCity($scope.latitude, $scope.longitude);
+
                     }, function(errResponse) {
                         console.log('Failed: ', errResponse);
                     });
