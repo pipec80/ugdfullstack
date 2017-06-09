@@ -13,8 +13,10 @@ def consumeGETRequestSync():
 
     for entry in data['result']['records']:
         cmd = entry
-        cmd['location'] = {"coordinates":[float(cmd['LONGITUD']), float(cmd['LATITUD'])], "type":"Point"}
+        cmd['location'] = {
+            "coordinates":[float(cmd['LONGITUD']), float(cmd['LATITUD'])], "type":"Point"
+        }
         db.puntosCarga.insert(cmd)
-        
+
     print('puntos cargados', db.puntosCarga.count())
 consumeGETRequestSync()

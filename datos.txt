@@ -9,7 +9,8 @@ python .\restapi.py
 python .\load_datos_bip.py
 
 
--70.6038217|--|-33.421955
+Latitud: 	-33.462501525879
+Longitud: 	-70.668197631836
 
 Array [ 5, "-33.4183253038000032120180549100041…", "-70.6018049956999931282553006894886…" ]
 
@@ -25,6 +26,14 @@ https://docs.mongodb.com/manual/tutorial/geospatial-tutorial/
 
 .\mongo.exe bdpuntosCarga
 
-db.puntosCarga.createIndex({ "location": "2dsphere" })
-
+db.puntosCarga.createIndex({ "location": "2d" })
+db.puntosCarga.ensureIndex([("location", 2dsphere)])
+db.puntosCarga.findOne()
+db.puntosCarga.find( {location: { $near: [ -70.668197631836 , -33.462501525879 ],  $maxDistance: 100000 } )
+db.puntosCarga.indexes.find()
 http://127.0.0.1:9000/puntoventa?P=(-70.6038217,-33.421955)&R=10
+
+
+db.puntosCarga.find({ location:
+   { $geoWithin:
+      { $centerSphere: [ [ -70.668197631836, -33.462501525879 ], 1 / 3963.2 ] } } })
