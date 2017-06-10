@@ -35,10 +35,5 @@ def api_puntos():
     resp.headers['Link'] = 'http://server'
     return resp
 
-@app.route('/puntoventa/<puntoventaid>')
-def api_article(puntoventaid):
-    """solo test"""
-    return 'You are reading ' + puntoventaid
-
 if __name__ == '__main__':
     app.run(port=9000)

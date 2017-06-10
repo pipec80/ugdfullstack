@@ -6,6 +6,7 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
         $scope.mostrar = false;
         $scope.puntosRegargas = [];
         $scope.puntoCercano = [];
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
                 $scope.$apply(function() {
@@ -26,6 +27,7 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
                 });
             });
         }
+
     }])
     .factory('dataResource', ['$resource', 'URL_API', function($resource, URL_API) {
         return $resource(URL_API, //la url donde queremos consumir
