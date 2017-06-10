@@ -6,4 +6,6 @@ bk/
 assets/css/.sass-cache/
 assets/css/maps/
 debug.log
+package-lock.json
+datos.txt
 .vscode/
