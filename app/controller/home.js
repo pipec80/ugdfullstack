@@ -20,10 +20,11 @@ mainApp.controller('mainController', ['$scope', 'dataResource', function($scope,
                     dataResource.query({ longitude: $scope.longitude, latitude: $scope.latitude, radio: 1 }).$promise.then(function(data) {
                         $scope.listado = data;
                         $scope.totalItems = $scope.listado.length;
+                        $scope.mostrar = true;
                     }, function(errResponse) {
                         console.log('Failed: ', errResponse);
                     });
-                    $scope.mostrar = true;
+
                 });
             });
         }
