@@ -6,28 +6,30 @@ app = Flask(__name__)
 @app.route('/')
 def api_root():
     client = MongoClient()
-    db = client.bdpuntosCarga
-    docs = list(db.puntosCarga.find())
-    js = json.dumps(docs)
-    resp = Response(js, status=201, mimetype='application/json')
+    dbclient = client.bdpuntosCarga
+    docs = list(dbclient.puntosCarga.find())
+    resultset = json.dumps(docs)
+    resp = Response(resultset, status=201, mimetype='application/json')
     resp.headers['Link'] = 'http://server'
     return resp
 
 @app.route('/puntoventa', methods = ['GET'])
 def api_puntos():
     latlag = request.args['P']
-    radio = request.args['R']
-    #[ <longitude> , <latitude> ]
+    radiorequest = request.args['R']
+
     latlagvalues = latlag.split(",")
     latitude = float(latlagvalues[0].replace("(", ""))
     longitude = float(latlagvalues[1].replace(")", ""))
+    radius = int(radiorequest) / 6378.1
 
     client = MongoClient()
     dbclient = client.bdpuntosCarga
-    query = {"location": SON([("$near", [longitude, latitude]), ("$maxDistance", 10000)])}
-    data  = list(dbclient.puntosCarga.find(query))
-    js = json.dumps(data)
-    resp = Response(js, status=201, mimetype='application/json')
+    #[ <longitude> , <latitude> ]
+    query = {"location":{"$geoWithin":{"$centerSphere":[[longitude, latitude], radius]}}}
+    data = list(dbclient.puntosCarga.find(query))
+    resultset = json.dumps(data)
+    resp = Response(resultset, status=201, mimetype='application/json')
     resp.headers['Link'] = 'http://server'
     return resp
 

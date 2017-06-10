@@ -2,6 +2,7 @@
 gulpfile.js
 package.json
 node_modules/
+bk/
 assets/css/.sass-cache/
 assets/css/maps/
 debug.log
