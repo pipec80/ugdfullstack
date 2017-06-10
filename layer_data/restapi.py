@@ -5,6 +5,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def api_root():
+    """retorna todos los puntos de carga"""
     client = MongoClient()
     dbclient = client.bdpuntosCarga
     docs = list(dbclient.puntosCarga.find())
@@ -15,6 +16,7 @@ def api_root():
 
 @app.route('/puntoventa', methods = ['GET'])
 def api_puntos():
+    """retorna los puntos de carga segun los parametros latitude,longitude y radio"""
     latlag = request.args['P']
     radiorequest = request.args['R']
 
@@ -35,6 +37,7 @@ def api_puntos():
 
 @app.route('/puntoventa/<puntoventaid>')
 def api_article(puntoventaid):
+    """solo test"""
     return 'You are reading ' + puntoventaid
 
 if __name__ == '__main__':
